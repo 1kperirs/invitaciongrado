@@ -86,23 +86,25 @@ body.loaded .intro-overlay {
   align-items: center;
   justify-content: center;
   text-align: center;
-  max-width: min(100vw, 420px);
+  width: min(100%, 360px);
+  max-width: 100%;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(3.2rem, 11vw, 12rem);
+  font-size: clamp(2.9rem, 10vw, 10rem);
   font-weight: 700;
-  line-height: 0.8;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  line-height: 0.78;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
   color: var(--gold-soft);
   text-shadow: 0 0 18px rgba(231, 199, 107, 0.7), 0 0 48px rgba(231, 199, 107, 0.38);
-  transform: scale(0.7);
+  transform: scale(0.75);
   opacity: 0;
   animation: introReveal 3s ease forwards;
 }
 
 .intro-text span {
   display: block;
-  line-height: 0.78;
+  line-height: 0.82;
+  white-space: nowrap;
 }
 
 @keyframes introReveal {
@@ -394,15 +396,19 @@ button:hover {
 
 @media (max-width: 540px) {
   .intro-overlay {
-    padding: 1.25rem;
+    padding: 1.1rem;
   }
 
   .intro-text {
-    max-width: 100%;
-    font-size: clamp(2.4rem, 17vw, 5rem);
-    letter-spacing: 0.03em;
-    line-height: 0.88;
+    width: min(100%, 220px);
+    font-size: clamp(2.1rem, 15vw, 4.8rem);
+    letter-spacing: 0.02em;
+    line-height: 0.82;
     gap: 0.12em;
+  }
+
+  .intro-text span {
+    white-space: normal;
   }
 
   .hero {
