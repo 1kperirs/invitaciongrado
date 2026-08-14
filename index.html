@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitación de Grado</title>
+    <meta
+      name="description"
+      content="Invitación digital para la graduación de abogado con cuenta regresiva y confirmación de asistencia."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="intro-overlay" aria-hidden="true">
+      <div class="intro-stars"></div>
+      <div class="intro-text">
+        <span>te</span>
+        <span>invitamos</span>
+      </div>
+    </div>
+
+    <main class="container hero">
+      <header class="topbar">
+        <div class="brand">Graduación</div>
+        <div class="badge">Invitación de grado</div>
+      </header>
+
+      <section class="invitation-grid">
+        <article class="card invitation-card">
+          <p class="eyebrow">Te invitamos</p>
+          <h1>
+            Celebrando el triunfo de
+            <span class="highlight">Alirio Rueda Useche</span>
+          </h1>
+
+          <p class="subtitle">
+            Con gran emoción te invitamos a acompañarnos en este momento inolvidable
+            del día de su graduación como abogado. Es un orgullo celebrar este logro,
+            el esfuerzo y la dedicación que lo llevaron a esta nueva etapa.
+          </p>
+
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-label">Fecha</span>
+              <span class="info-value">28 Ago 2026</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Hora</span>
+              <span class="info-value">7:00 PM</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Lugar</span>
+              <span class="info-value">Caney Llanero</span>
+            </div>
+          </div>
+
+          <p class="subtitle" style="margin-top: 0.5rem; margin-bottom: 1.2rem;">
+            <strong>Lugar:</strong> Caney Llanero - Entrada la Ciudadela<br />
+            <strong>Invita:</strong> Alirio Rueda y Esposa<br />
+            <strong>Detalle:</strong> Lluvia de sobres<br />
+            <strong>Mensaje:</strong> Los esperamos.
+          </p>
+
+          <div class="countdown" aria-label="Cuenta regresiva para la graduación">
+            <div class="time-box">
+              <div id="days" class="time-value">00</div>
+              <span class="time-label">Días</span>
+            </div>
+            <div class="time-box">
+              <div id="hours" class="time-value">00</div>
+              <span class="time-label">Horas</span>
+            </div>
+            <div class="time-box">
+              <div id="minutes" class="time-value">00</div>
+              <span class="time-label">Min</span>
+            </div>
+            <div class="time-box">
+              <div id="seconds" class="time-value">00</div>
+              <span class="time-label">Seg</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card rsvp-card">
+          <div class="rsvp-header">
+            <h2>Confirmar asistencia</h2>
+            <p>Invita Alirio Rueda y esposa. Lluvia de sobres. Los esperamos.</p>
+          </div>
+
+          <form id="rsvp-form">
+            <div class="form-group">
+              <label for="name">Nombre completo</label>
+              <input id="name" name="name" type="text" placeholder="Escribe tu nombre" required />
+            </div>
+
+            <div class="form-group">
+              <label for="attendance">¿Asistirás?</label>
+              <select id="attendance" name="attendance" required>
+                <option value="">Selecciona una opción</option>
+                <option value="yes">Sí, confirmaré mi asistencia</option>
+                <option value="no">No podré asistir</option>
+              </select>
+            </div>
+
+            <button type="submit">Enviar respuesta</button>
+          </form>
+
+          <div id="form-message" class="message" aria-live="polite"></div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

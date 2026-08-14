@@ -1,0 +1,421 @@
+:root {
+  --bg-dark: #0d1321;
+  --bg-card: rgba(17, 24, 39, 0.82);
+  --gold: #e7c76b;
+  --gold-soft: #f4df9a;
+  --white: #f8fafc;
+  --muted: #d6d9df;
+  --line: rgba(255, 255, 255, 0.12);
+  --success: #7ce7a4;
+  --shadow: rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(231, 199, 107, 0.18), transparent 30%),
+    linear-gradient(135deg, #0b1020 0%, #1a2236 45%, #0b1324 100%);
+  color: var(--white);
+  min-height: 100vh;
+}
+
+body .hero {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+body.loaded .hero {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 1rem;
+  background: radial-gradient(circle at center, rgba(231, 199, 107, 0.22), rgba(11, 16, 32, 0.96) 48%, rgba(7, 10, 20, 1) 100%);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+body.loaded .intro-overlay {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(2px 2px at 20% 80%, rgba(231, 199, 107, 0.9), transparent),
+    radial-gradient(2px 2px at 30% 30%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 45% 15%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.5px 1.5px at 60% 55%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 78% 18%, rgba(231, 199, 107, 0.9), transparent),
+    radial-gradient(2px 2px at 85% 70%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 90% 40%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 70% 82%, rgba(231, 199, 107, 0.9), transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  animation: twinkle 2.4s ease-in-out infinite alternate;
+}
+
+.intro-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: min(100vw, 420px);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(3.2rem, 11vw, 12rem);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  text-shadow: 0 0 18px rgba(231, 199, 107, 0.7), 0 0 48px rgba(231, 199, 107, 0.38);
+  transform: scale(0.7);
+  opacity: 0;
+  animation: introReveal 3s ease forwards;
+}
+
+.intro-text span {
+  display: block;
+  line-height: 0.78;
+}
+
+@keyframes introReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(18px);
+    filter: blur(12px);
+  }
+  25%, 65% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.08) translateY(-12px);
+    filter: blur(8px);
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.container {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 4rem 0 2rem;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.brand {
+  letter-spacing: 0.26rem;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: var(--gold-soft);
+}
+
+.badge {
+  border: 1px solid rgba(231, 199, 107, 0.5);
+  color: var(--gold-soft);
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+.invitation-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  box-shadow: 0 26px 60px var(--shadow);
+}
+
+.invitation-card {
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.invitation-card::before,
+.invitation-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(231, 199, 107, 0.08);
+  filter: blur(12px);
+}
+
+.invitation-card::before {
+  top: -80px;
+  right: -30px;
+}
+
+.invitation-card::after {
+  bottom: -110px;
+  left: -40px;
+}
+
+.eyebrow {
+  color: var(--gold-soft);
+  letter-spacing: 0.18rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  line-height: 0.98;
+  margin-bottom: 1.2rem;
+}
+
+.highlight {
+  color: var(--gold-soft);
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 55ch;
+  margin-bottom: 1.8rem;
+}
+
+.info-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+.info-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 0.4rem;
+}
+
+.info-value {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(70px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.time-box {
+  text-align: center;
+  padding: 1.1rem 0.6rem;
+  border-radius: 18px;
+  background: rgba(231, 199, 107, 0.08);
+  border: 1px solid rgba(231, 199, 107, 0.28);
+}
+
+.time-value {
+  font-size: clamp(1.6rem, 2.4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--gold-soft);
+}
+
+.time-label {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rsvp-card {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rsvp-header {
+  margin-bottom: 1.3rem;
+}
+
+.rsvp-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.rsvp-header p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  font: inherit;
+}
+
+input,
+select {
+  background: rgba(15, 23, 42, 0.75);
+  color: var(--white);
+  padding: 0.9rem 1rem;
+}
+
+input::placeholder {
+  color: rgba(226, 232, 240, 0.7);
+}
+
+button {
+  margin-top: 0.6rem;
+  padding: 1rem 1.2rem;
+  border: none;
+  background: linear-gradient(135deg, var(--gold), #c9962e);
+  color: #0d1321;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 22px rgba(201, 150, 46, 0.35);
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+.message {
+  margin-top: 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  display: none;
+  font-size: 0.96rem;
+}
+
+.message.show {
+  display: block;
+}
+
+.message.success {
+  background: rgba(124, 231, 164, 0.12);
+  color: var(--success);
+  border: 1px solid rgba(124, 231, 164, 0.35);
+}
+
+@media (max-width: 860px) {
+  .invitation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 540px) {
+  .intro-overlay {
+    padding: 1.25rem;
+  }
+
+  .intro-text {
+    max-width: 100%;
+    font-size: clamp(2.4rem, 17vw, 5rem);
+    letter-spacing: 0.03em;
+    line-height: 0.88;
+    gap: 0.12em;
+  }
+
+  .hero {
+    padding-top: 2.5rem;
+  }
+
+  .invitation-card,
+  .rsvp-card {
+    padding: 1.4rem;
+  }
+
+  .info-list,
+  .countdown {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+  }
+}
