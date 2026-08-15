@@ -47,11 +47,16 @@ form.addEventListener('submit', (event) => {
   const formData = new FormData(form);
   const name = formData.get('name')?.toString().trim() || 'Invitado';
   const attendance = formData.get('attendance');
+  const peopleCount = Number(formData.get('people')) || 1;
 
   message.textContent = attendance === 'yes'
-    ? `¡Muchas gracias, ${name}! Confirmaste tu asistencia y nos alegra celebrar juntos este momento tan especial.`
-    : `Gracias, ${name}. Hemos registrado tu respuesta y estaremos atentos a tu próxima visita.`;
+    ? `¡Muchas gracias, ${name}! Confirmaste tu asistencia para ${peopleCount} persona${peopleCount > 1 ? 's' : ''}. Nos alegra celebrar juntos este momento tan especial.`
+    : `Gracias, ${name}. Hemos registrado tu respuesta. Si cambias de opinión, estaremos atentos para recibirte.`;
 
   message.classList.add('show', 'success');
   form.reset();
+  const peopleInput = document.getElementById('people');
+  if (peopleInput) {
+    peopleInput.value = 1;
+  }
 });
